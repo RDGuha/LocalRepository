@@ -42,6 +42,12 @@ public class ApplicationContextConfig {
 
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
+		
+		Properties connectionProperties = new Properties();
+		connectionProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+		connectionProperties.setProperty("hibernate.show_sql", "true");
+		connectionProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		
 		return dataSource;
 	}
     

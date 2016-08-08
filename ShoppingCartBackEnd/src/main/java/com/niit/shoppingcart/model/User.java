@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table
+@Table (name = "USER")
 @Component
 
 public class User {
@@ -19,12 +19,16 @@ public class User {
 
 
 	private String name;
+	
+	private String password;
+	
+	private String mobile;
 
 	private String email; 
 	
 	private String address;
 	
-	private String mobile;
+	
 	
 	
 
@@ -67,6 +71,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

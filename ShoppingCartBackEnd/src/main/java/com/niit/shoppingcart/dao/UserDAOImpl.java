@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.niit.shoppingcart.model.User;
 
 @Repository("userDAO")
@@ -64,7 +65,20 @@ public class UserDAOImpl implements UserDAO {
 		return listUser;
 	}
 	
-	
+	@Transactional
+	public boolean isValidUser(String id, String password) {
+		String hql = "from UserDetails where id= '" + id + "' and " + " password ='" + password+"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<User> list = (List<User>) query.list();
+		
+		if (list != null && !list.isEmpty()) {
+			return true;
+		}
+		
+		return false;
+	}
 
 
 }
